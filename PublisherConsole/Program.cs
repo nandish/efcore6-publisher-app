@@ -8,9 +8,13 @@ using PublisherConsole;
 
 
 //Run Section 3 Sample
-Section3 section3 = new Section3();
-section3.Run();
+//Section3 section3 = new Section3();
+//section3.Run();
 
+
+//Run Section 4 sample
+Section4 section4 = new Section4();
+section4.Run();
 
 
 

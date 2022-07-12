@@ -9,15 +9,18 @@ internal class Section2
     {
         using (PubContext context = new PubContext())
         {
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+            
         }
 
         //GetAuthors();
-        //AddAuthor();
+        
+        //AddAuthorWithBook();
+        //AddAuthors();
         //GetAuthors();
 
-        //AddAuthorWithBook();
-        GetAuthorsWithBooks();
+        //GetAuthorsWithBooks();
     }
     
     void AddAuthorWithBook()
@@ -70,10 +73,12 @@ internal class Section2
         }
     }
 
-    void AddAuthor()
+    void AddAuthors()
     {
         using (var context = new PubContext())
         {
+            context.Authors.Add(new Author { FirstName = "Josie", LastName = "Newf" });
+            context.Authors.Add(new Author { FirstName = "Julie", LastName = "Lerman" });
             context.Authors.Add(new Author { FirstName = "Rhoda", LastName = "Lerman" });
             context.Authors.Add(new Author { FirstName = "Don", LastName = "Jones" });
             context.Authors.Add(new Author { FirstName = "Jim", LastName = "Christopher" });
