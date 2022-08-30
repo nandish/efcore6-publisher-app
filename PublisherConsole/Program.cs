@@ -13,9 +13,13 @@ using PublisherConsole;
 
 
 //Run Section 4 sample
-Section4 section4 = new Section4();
-section4.Run();
+//Section4 section4 = new Section4();
+//section4.Run();
 
+
+//Run Section 7 Sample
+Section7 section7 = new Section7();
+section7.Run();
 
 
 

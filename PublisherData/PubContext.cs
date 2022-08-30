@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PublisherDomain;
+using System.Diagnostics;
 
 namespace PublisherData
 {
     public class PubContext : DbContext
     {
+        StreamWriter _writer = new StreamWriter("EFCoreLog.txt", append: true);
+
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
 
@@ -13,8 +17,12 @@ namespace PublisherData
         {
             optionsBuilder.UseSqlServer(
                 "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = PubDatabase"
-            );
-
+            )
+            //.LogTo(log => Debug.WriteLine(log))
+            //.LogTo(_writer.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+            .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+            .EnableSensitiveDataLogging(); 
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,6 +57,10 @@ namespace PublisherData
 
         }
 
-
+        public override void Dispose()
+        {
+            _writer.Dispose();
+            base.Dispose();
+        }
     }
 }
