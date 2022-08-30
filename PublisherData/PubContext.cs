@@ -7,7 +7,7 @@ namespace PublisherData
 {
     public class PubContext : DbContext
     {
-        StreamWriter _writer = new StreamWriter("EFCoreLog.txt", append: true);
+        //StreamWriter _writer = new StreamWriter("EFCoreLog.txt", append: true);
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -59,7 +59,7 @@ namespace PublisherData
 
         public override void Dispose()
         {
-            _writer.Dispose();
+            //_writer.Dispose();
             base.Dispose();
         }
     }

@@ -18,8 +18,11 @@ using PublisherConsole;
 
 
 //Run Section 7 Sample
-Section7 section7 = new Section7();
-section7.Run();
+//Section7 section7 = new Section7();
+//section7.Run();
 
 
+//Run Section 7 Sample
+Section8 section8 = new Section8();
+section8.Run();
 
